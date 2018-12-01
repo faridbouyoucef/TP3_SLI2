@@ -13,8 +13,8 @@
 0 & 0 & 0.0064  
 \end{bmatrix}$\\\\\\
  
-On alors le $rang(Co)=3$ est qui est égale a la dimention du système, d'ou le système est commandable.\\  
-De même si on va le vérifier avec MATLAB  \hyperref[section1.1]{(voir Annexe 1)}\label{annexe1}\\
+On a alors le $rang(Co)=3$ est qui est égale a la dimention du système, d'ou le système est commandable.\\  
+De même, on a vérifier avec MATLAB la commandabilité du système.  \hyperref[section1.1]{(voir Annexe 1)}\label{annexe1}\\
  
  
  
@@ -36,5 +36,23 @@ $0 \leq Q_{1}(t) \leq Q_{max}$ \cite{ref1}\\\\\\ .
 \captionof{figure}{\textit{ Retour d’état.\cite{ref1}}}
 \label{fig2} 
 \end{center}
+
+La loi de commande choisie est un retour d'état classique représenté sur la figure 3.1 \\\\
+
+
+Pour calculer les valeur du Gain K on :\\ 
+$det(\lambda I_{dim3}-(A-BK))=(\lambda-P_{1})(\lambda-P_{2})(\lambda-P_{3})$\\\\
+
+avec : $P_{1}=-0.03333 \quad P_{2}=-0.03777 \quad P_{3}=-0.0444$ (les valeurs propres désirés)\\
+
+D'ou :    $\lambda I_{dim3}-(A-BK)=\begin{bmatrix} 
+000 & -0.5975 & 0.0110 \\
+0 & 0.5975 & -0.0173 \\
+0 & 0 & 0.0064  
+\end{bmatrix} $
+
+
+
+
 
 
