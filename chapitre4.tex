@@ -1,11 +1,40 @@
 \chapter{Implantation De Le Loi De Commande}
+      
+       
+ 
+ 
 \addcontentsline{toc}{chapter}{Implantation De Le Loi De Commande}
  \section{Calcul D’un Observateur Minimal Identité}
 
  \subsection{Le modèle linéarisé est-il observable ?}
  
+ Pour voir est ce que le système étudier est observable   on va calculer la matrice \\
+ Méthode analytique :\\\\
+      $obs$=$\begin{bmatrix}
+      C & CA & CA^{2}
+      \end{bmatrix}$\\\\
+      
+      $obs$=$\begin{bmatrix}
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      \end{bmatrix}$
+ 
+ %%%%%%%%%%%copmpleter%%%%%%%%
  
  \subsection{Calcul Du Nouveau Observateur identité }
+Constitution de l'observateur minimale identité
+
+\begin{equation}
+\left\{\begin{matrix}
+\dot{s}(t)=Fs(t)+(FG-GA{11}+A{21})y(t)+(B2-GB{1}u(t))\\
+ y(t)=Cx(t)+Du(t)\\
+\end{matrix}\right.
+\end{equation}   
+talque\\ 
+$F$=$A{22}-GA{12}$ 
+  
+ 
  
  \subsection{Insertion Dans Notre  Schéma Simulink l’observateur sous la forme d’un bloc State-Space.}
  
