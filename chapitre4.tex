@@ -12,7 +12,7 @@
  Méthode analytique :\\\\
       $obs$=$\begin{bmatrix}
       C & CA & CA^{2}
-      \end{bmatrix}$\\\\
+      \end{bmatrix}^{T}$\\\\
       
       $obs$=$\begin{bmatrix}
       0 & 0 & 0 \\
@@ -97,7 +97,54 @@ puis en calcule  le déterminent de cette matrice puis on va faire l'identificat
 $det(\lambda I-F)= 2-0.0092g_{1}\lambda-0.0092_{g2}$\\
 
 $P_{désiré}=(\lambda+0.04)(\lambda+0.05)\\
-           =\lambda^{2}+0.09\lambda+0.002$\\
+           =\lambda^{2}+0.09\lambda+0.002$\\\\
+
+
+par identification on trouve:\\\\
+
+$G=\begin{bmatrix}
+216\\
+0.217\\
+\end{bmatrix}
+\quad
+F=\begin{bmatrix}
+-0.009872 & 1\\
+ 0.001996 & 1\\
+\end{bmatrix}$\\\\
+
+$Calcule De G_{tild} et H_{tild}$:\\\\
+
+$G_{tild}=FG-GA_{11}+A_{21}
+\quad\\\\
+G_{tild}=\begin{bmatrix}
+-1.91\\
+ 0.6481\\
+\end{bmatrix}$\\\\
+$B_{11}=\begin{bmatrix}
+64.9351
+\end{bmatrix}
+\quad 
+B_{21}=\begin{bmatrix}
+0\\
+0
+\end{bmatrix}$
+
+
+$H_{tild}=B_{21}G-GB_{11}
+\quad\\\\
+G_{tild}=\begin{bmatrix}
+-1.91\\
+ 0.6481\\
+\end{bmatrix}\\\\$
+
+
+
+
+
+
+
+           
+           
 
 
 
