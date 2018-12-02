@@ -23,7 +23,34 @@
  %%%%%%%%%%%copmpleter%%%%%%%%
  
  \subsection{Calcul Du Nouveau Observateur identité }
-Constitution de l'observateur minimale identité
+Constitution de l'observateur minimale identité\\\\
+$A$=$\begin{bmatrix}
+-0.0092 & 0.0092 & 0 \\
+0.0092 & -0.0198 & 0.0106\\
+0 & 0.0106 & 0.0486\\
+\end{bmatrix}$\\\\
+Séparation de la matrice A 
+
+$A{11}=\begin{bmatrix}
+-0.0092
+\end{bmatrix}
+\quad ;
+A{21}=\begin{bmatrix}
+0.0092\\
+0
+\end{bmatrix}$\\\\
+
+
+$A{11}=\begin{bmatrix}
+0.0092 & 0
+\end{bmatrix}
+\quad ;
+A{22}=\begin{bmatrix}
+-0.0198 & 0.0106 \\
+0.0106 & 0.0486
+\end{bmatrix}$\\\\
+ 
+
 
 \begin{equation}
 \left\{\begin{matrix}
@@ -32,7 +59,48 @@ Constitution de l'observateur minimale identité
 \end{matrix}\right.
 \end{equation}   
 talque\\ 
-$F$=$A{22}-GA{12}$ 
+$F$=$A{22}-GA{12}$\\\\
+alors on a \\\\
+$\begin{bmatrix}
+f11 & f12\\
+f21 & f22\\
+\end{bmatrix}
+\quad=
+\begin{bmatrix}
+1 & 1\\
+0 & 1\\
+\end{bmatrix}
+\quad-
+\begin{bmatrix}
+g1\\
+g2\\
+\end{bmatrix}
+\quad
+\begin{bmatrix}
+0.0092 & 0
+\end{bmatrix}$\\\\
+
+alors on aura \\\\
+$F=
+\begin{bmatrix}
+f11 & f12\\
+f21 & f22\\
+\end{bmatrix}
+\quad=
+\begin{bmatrix}
+(1-0.0092g1) & 1\\
+(-0.0092g2) && 1\\
+\end{bmatrix}$\\\\
+
+puis en calcule  le déterminent de cette matrice puis on va faire l'identification avec le polynôme désiré\\\\
+
+$det(\lambda I-F)= 2-0.0092g1\lambda-0.0092g2$\\
+
+$P_{désiré}=(\lambda+0.04)(\lambda+0.05)\\
+           =\lambda^{2}+0.09\lambda+0.002$\\
+
+
+
   
  
  
