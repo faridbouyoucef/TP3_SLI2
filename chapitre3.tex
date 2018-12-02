@@ -40,16 +40,39 @@ $0 \leq Q_{1}(t) \leq Q_{max}$ \cite{ref1}\\\\\\ .
 La loi de commande choisie est un retour d'état classique représenté sur la figure 3.1 \\\\
 
 
-Pour calculer les valeur du Gain K on :\\ 
+Pour calculer la valeur du Gain K on pose :\\
+
+$K=[k_{1}\quad k_{2} \quad k_{3}]$\\\\
+et on a : 
 $det(\lambda I_{dim3}-(A-BK))=(\lambda-P_{1})(\lambda-P_{2})(\lambda-P_{3})$\\\\
 
 avec : $P_{1}=-0.03333 \quad P_{2}=-0.03777 \quad P_{3}=-0.0444$ (les valeurs propres désirés)\\
 
-D'ou :    $\lambda I_{dim3}-(A-BK)=\begin{bmatrix} 
-000 & -0.5975 & 0.0110 \\
-0 & 0.5975 & -0.0173 \\
-0 & 0 & 0.0064  
-\end{bmatrix} $
+D'ou :\\
+$\lambda I_{dim3}-(A-BK)=\begin{bmatrix} 
+\lambda+0.0092+649352k_{1} & -0.0092+649352k_{2} & +649352k_{3} \\
+0 & \lambda & 0 \\
+0 & 0 & \lambda  
+\end{bmatrix} $\\\\
+ 
+après avoir l'identification des deux déterminants on obtient alors :\\
+
+$k_{1}=  ,\quad k_{2}=  ,\quad k_{3}=  $, \\\\
+
+D'ou : $K=[000 \quad 000  \quad 000]$\\\\
+
+De même, on a calculer la valeur de K en utilisant MATLAB \hyperref[section1.2]{(voir Annexe 2)}\label{annexe2}\\\\
+
+Pour calculer la valeur du Gain N on a :\\\\
+
+$N=1/(C*(-A+B*K)^{-1}*B*\varepsilon $ \quad avec : $\varepsilon=1$, car on veut que l'erreur doit être nulle en régime permanent. \\\\
+
+et on obtient N=????? \quad \hyperref[section1.2]{(voir Annexe 2)}\label{annexe2}\\\\
+
+
+
+
+    
 
 
 
