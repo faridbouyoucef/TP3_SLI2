@@ -8,18 +8,21 @@
 
  \subsection{Le modèle linéarisé est-il observable ?}
  
- Pour voir est ce que le système étudier est observable   on va calculer la matrice \\
+ Pour voir est ce que le système étudier est observable   on va calculer la matrice de l'observabilté : \\
  Méthode analytique :\\\\
       $obs$=$\begin{bmatrix}
       C & CA & CA^{2}
       \end{bmatrix}^{T}$\\\\
       
       $obs$=$\begin{bmatrix}
-      0 & 0 & 0 \\
-      0 & 0 & 0 \\
-      0 & 0 & 0 \\
+      1 & 0 & 0 \\
+      -0.2349 & -1.0938 & 0.9174 \\
+      0.0451 & 0.2883 & -0.2717 \\
       \end{bmatrix}$
- 
+      
+De même, on a vérifier avec MATLAB l'observabilité du système. \hyperref[section1.3]{(voir Annexe 3)}\label{annexe3}\\ 
+
+ On remarque que le rang de la matrice obs est égale à la dimension du système d'ou le système est observable.
  %%%%%%%%%%%copmpleter%%%%%%%%
  
  \subsection{Calcul Du Nouveau Observateur identité }
@@ -96,20 +99,20 @@ puis en calcule  le déterminent de cette matrice puis on va faire l'identificat
 
 $det(\lambda I-F)= 2-0.0092g_{1}\lambda-0.0092_{g2}$\\
 
-$P_{désiré}=(\lambda+0.04)(\lambda+0.05)\\
-           =\lambda^{2}+0.09\lambda+0.002$\\\\
+$P_{désiré}=(\lambda+0.11)(\lambda+0.17)\\$
+           
 
 
 par identification on trouve:\\\\
 
 $G=\begin{bmatrix}
-216\\
-0.217\\
+0.1393^{3}\\
+3.9546^{3}\\
 \end{bmatrix}
 \quad
 F=\begin{bmatrix}
--0.009872 & 1\\
- 0.001996 & 1\\
+-1.3014 & 0.0106\\
+ -36.3807 & -0.0486\\
 \end{bmatrix}$\\\\
 
 $Calcule De G_{tild} et H_{tild}$:\\\\
@@ -117,8 +120,8 @@ $Calcule De G_{tild} et H_{tild}$:\\\\
 $G_{tild}=FG-GA_{11}+A_{21}
 \quad\\\\
 G_{tild}=\begin{bmatrix}
--1.91\\
- 0.6481\\
+-0.0904^{3}\\
+ -2.5679^{3}\\
 \end{bmatrix}$\\\\
 $B_{11}=\begin{bmatrix}
 64.9351
@@ -132,55 +135,102 @@ B_{21}=\begin{bmatrix}
 
 $H_{tild}=B_{21}G-GB_{11}
 \quad\\\\
-G_{tild}=\begin{bmatrix}
--1.91\\
- 0.6481\\
-\end{bmatrix}\\\\$
+\begin{bmatrix}
+-0.0904^{5}\\
+ -2.5678^{5}\\
+\end{bmatrix}$\\\\
 
+\begin{equation}
+\left\{\begin{matrix}
+\dot{s}(t)=\begin{bmatrix}
+-1.3014 & 0.0106\\
+ -36.3807 & -0.0486\\
+\end{bmatrix}s(t)+(\begin{bmatrix}
+-1.3014 & 0.0106\\
+ -36.3807 & -0.0486\\
+\end{bmatrix}\begin{bmatrix}
+0.1393^{3}\\
+3.9546^{3}\\
+\end{bmatrix}-\begin{bmatrix}
+0.1393^{3}\\
+3.9546^{3}\\
+\end{bmatrix}A_{11}\\
++A_{21})y(t)+(B_{2}-
+\begin{bmatrix}
+0.1393^{3}\\
+3.9546^{3}\\
+\end{bmatrix}B_{1}u(t))\\
+ x^(t)=s(t)+\begin{bmatrix}
+0.1393^{3}\\
+3.9546^{3}\\
+\end{bmatrix}y(t)\\
+\end{matrix}\right.\\\\
+\end{equation}   
+On a aussi calculer l'observateur minimal identité avec Matlab \hyperref[section1.3]{(voir Annexe 3)}\label{annexe3}\\
+ 
+ \subsection{Insertion Dans Notre  Schéma Simulink l’observateur sous la forme d’un bloc State-Space avec le bouclage déterminé précésemment.}
 
-
-
-
-
-
-           
-           
-
-
-
+\begin{center}
+\includegraphics[scale=0.4]{schemabloc2.PNG}
+\captionof{figure}{\textit{Schéma simulink avec l'observateur minimal identité.}}
+\label{fig1} 
+\end{center}   
   
- 
- 
- \subsection{Insertion Dans Notre  Schéma Simulink l’observateur sous la forme d’un bloc State-Space.}
- 
- 
- \subsection{Étude en boucle fermer  }
-  \subsubsection{ Vérification que les états estimés convergent vers les états réels du système linéarisé
-lorsque les hauteurs initiales sont non nulles.}
-  \subsubsection{Évaluation la vitesse de convergence.}
-  
-  
- \subsection{Réalisation Du Bouclage Déterminé Précédemment En Utilisant les états estimés (cf. figure 4.1).} 
+ \subsection{Vérification, que les états estimés convergent vers les états réels du système linéarisé.\\\\} 
  
 \begin{center}
-\includegraphics[scale=0.5]{fig3.png}
-\captionof{figure}{\textit{ Observateur.}}
+\includegraphics[scale=0.4]{Y1.PNG}
+\captionof{figure}{\textit{le tracé des sorties éstimées.}}
+\label{fig3} 
+\end{center}
+ 
+ Selon la figure au-dessus, on remarque que la courbe de chaque état estimé converge vers son état réel.\\\\  
+ 
+ \subsection{Évaluation De  L’influence des Conditions Initiales.\\\\}
+
+Après avoir changé sur l'observateur minimale construit, ses conditions initiales [0 0] vers [0.5 0.5], sur Simulink on aura le tracé des deux courbes illustrées sur la figure au-dessous :\\    
+
+\begin{center}
+\includegraphics[scale=0.4]{Y1_condi_init.PNG}
+\captionof{figure}{\textit{le tracé des sorties éstimées avce les condition initials.}}
+\label{fig3} 
+\end{center}
+
+  
+ \section{Bruit Sur La Sortie Mesurée\\\\}
+ 
+ \begin{center}
+\includegraphics[scale=0.6]{schemabloc_bruit.PNG}
+\captionof{figure}{\textit{schéma simulink avec l'ajout de bruit.}}
+\label{fig3} 
+\end{center}
+
+
+\begin{center}
+\includegraphics[scale=0.4]{Y1_bruit.PNG}
+\captionof{figure}{\textit{le tracé des sorties estimées avec le bruit.}}
 \label{fig3} 
 \end{center}
  
  
- \subsection{Évaluation De  L’influence des Conditions Initiales}
- 
- 
- \subsection{Tracer  Des 3 courbes}
-  \subsubsection{Schéma Simulink de l’asservissement par retour de sortie}
-  \subsubsection{Évolution de l’erreur d’estimation;}
-  \subsubsection{Évolution de la consigne et de la sortie mesurée}
-  
- \section{Bruit Sur La Sortie Mesurée}
 
-  \subsection{Que constate-t-on sur la sortie du système et sur les états estimés pour le schéma pour le schéma de commande précédent?}
-  \subsection{Que constate-t-on sur la sortie du système et sur les états estimés pour le schéma pour le schéma de commande précédent?}
-   \subsubsection{Quel est sont effet } 
+  \subsection{Calcule d'un nouvel observateur de dynamique uniquement 2 fois plus rapide que le système bouclé par le retour d’état.\\\\}
+
+Dans cette partie, on multiplie les deux valeurs propres $P_{2}$ et $P_{3}$ par x2, et on obtient le tracé suivant :   
+
+
+\begin{center}
+\includegraphics[scale=0.4]{Y1_2P_bruit.PNG}
+\captionof{figure}{\textit{le tracé des sorties d'un nouvel observateur de dynamique 2 fois plus rapide que le système bouclé.}}
+\label{fig3} 
+\end{center}
   
-  \section{Expliquez le phénomène observé lors des deux dernières questions en vous basant sur une analyse fréquen-tielle des observateurs.} 
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -45,8 +45,9 @@ Pour calculer la valeur du Gain K on pose :\\
 $K=[k_{1}\quad k_{2} \quad k_{3}]$\\\\
 et on a : 
 $det(\lambda I_{dim3}-(A-BK))=(\lambda-P_{1})(\lambda-P_{2})(\lambda-P_{3})$\\\\
+Selon notre cahier des charges, on veut que le temps de réponse $t_{r}$ de la sortie doit respecter $t_{r} \leq 90s$ et on a $t_{r}=\frac{-3}{Rel(P)}$, donc la premier valeur propre soit : $P_{1}=\frac{-3}{90}=-0.0333$ et $P_{2}$, $P_{3}$ prennent deux valeur inférieure à $P_{1}$, et alors on va choisir que : $P_{1}=-0.11$ et $P_{2}=0.17$\\\\    
 
-avec : $P_{1}=-0.03333 \quad P_{2}=-0.03777 \quad P_{3}=-0.0444$ (les valeurs propres désirés)\\
+Alors : $P_{1}=-0.03333 \quad P_{2}=-0.11 \quad P_{3}=-0.17$ (les valeurs propres désirés)\\
 
 D'ou :\\
 $\lambda I_{dim3}-(A-BK)=\begin{bmatrix} 
@@ -57,9 +58,9 @@ $\lambda I_{dim3}-(A-BK)=\begin{bmatrix}
  
 après avoir l'identification des deux déterminants on obtient alors :\\
 
-$k_{1}=  ,\quad k_{2}=  ,\quad k_{3}=  $, \\\\
+$k_{1}=0.0035  ,\quad k_{2}=0.0170  ,\quad k_{3}=-0.0141  $, \\\\
 
-D'ou : $K=[000 \quad 000  \quad 000]$\\\\
+D'ou : $K=[0.0035 \quad 0.0170  \quad -0.0141]$\\\\
 
 De même, on a calculer la valeur de K en utilisant MATLAB \hyperref[section1.2]{(voir Annexe 2)}\label{annexe2}\\\\
 
@@ -67,11 +68,30 @@ Pour calculer la valeur du Gain N on a :\\\\
 
 $N=1/(C*(-A+B*K)^{-1}*B*\varepsilon $ \quad avec : $\varepsilon=1$, car on veut que l'erreur doit être nulle en régime permanent. \\\\
 
-et on obtient N=????? \quad \hyperref[section1.2]{(voir Annexe 2)}\label{annexe2}\\\\
+et on obtient $N=0.0108$ \quad \hyperref[section1.2]{(voir Annexe 2)}\label{annexe2}\\\\
+
+\section{Les tracés de $q_{1}(t)$ et de $h _{1}(t)$ ainsi que le schéma bloc.}
 
 
 
 
+\begin{center}
+\includegraphics[scale=0.7]{schemabloc1.PNG}
+\captionof{figure}{\textit{Schéma simulink avec un retour d'état.}}
+\label{fig1} 
+\end{center} 
+
+\begin{center}
+\includegraphics[scale=0.4]{q1(t).PNG}
+\captionof{figure}{\textit{le tracé de $q_{1}(t)$.}}
+\label{fig1} 
+\end{center} 
+
+\begin{center}
+\includegraphics[scale=0.4]{h1(t).PNG}
+\captionof{figure}{\textit{$h_{1}(t)$.}}
+\label{fig1} 
+\end{center} 
     
 
 
